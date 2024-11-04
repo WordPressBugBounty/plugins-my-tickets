@@ -34,8 +34,6 @@ function mt_add_to_cart_form_post( $content ) {
 			$content = mt_add_to_cart_form( $content, $event );
 		}
 	}
-	// Self remove filter so additional `the_content` calls don't repeat this.
-	remove_filter( 'the_content', 'mt_add_to_cart_form_post', 50, 1 );
 
 	return $content;
 }
@@ -580,6 +578,9 @@ function mt_ticket_row( $event_id, $registration, $ticket_type, $type, $availabl
 			$label     = ( 'event' === $registration['counting_method'] ) ? mt_format_date( $ticket_type['label'] ) : $ticket_type['label'];
 			$form_key  = ( 'event' === $registration['counting_method'] ) ? strtotime( strip_tags( $label ) ) : sanitize_key( strip_tags( $label ) );
 			$remaining = $inventory['available'];
+			if ( $remaining < 1 ) {
+				$remaining = 0;
+			}
 			/**
 			 * Filter maximum sale per event. Limits number of tickets that can be purchased at a time.
 			 *

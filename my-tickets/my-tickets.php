@@ -17,7 +17,7 @@
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/license/gpl-2.0.txt
  * Domain Path: lang
- * Version:     2.0.5
+ * Version:     2.0.6
  */
 
 /*
@@ -38,15 +38,13 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-load_plugin_textdomain( 'my-tickets', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
-
 /**
  * Return current version of My Tickets.
  *
  * @return string Current My Tickets version.
  */
 function mt_get_current_version() {
-	$mt_version = '2.0.5';
+	$mt_version = '2.0.6';
 
 	return $mt_version;
 }
@@ -732,7 +730,7 @@ We\'ll see you soon!<br />
 		'mt_show_closed'           => 'false',
 		'style_vars'               => mt_style_variables(),
 		'mt_inventory'             => 'actual',
-		'mt_singular'              => '',
+		'mt_singular'              => 'true',
 	);
 
 	return $defaults;
